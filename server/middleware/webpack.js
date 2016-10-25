@@ -3,8 +3,6 @@
  */
 
 import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackConfig from '../../webpack.config.babel'
 
 export const compiler = webpack(webpackConfig)
@@ -18,6 +16,8 @@ if (process.env.NODE_ENV === 'production') {
     console.log('webpack pre-built.')
   })
 } else {
+  const webpackDevMiddleware = require('webpack-dev-middleware')
+  const webpackHotMiddleware = require('webpack-hot-middleware')
   webpackDev = webpackDevMiddleware(compiler, webpackConfig.devServer)
   webpackHot = webpackHotMiddleware(compiler)
   console.log('webpack hot-reloading dev-server enabled.')
