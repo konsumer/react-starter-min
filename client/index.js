@@ -5,8 +5,7 @@ const App = (props) => (
   <div>Hello!</div>
 )
 
-if (module.hot) {
-  module.hot.accept()
-}
+// enable hot-module-reloading
+if (module.hot) { module.hot.accept() }
 
 ReactDOM.render(<App />, document.getElementById('root'))
